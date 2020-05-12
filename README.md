@@ -1,6 +1,13 @@
-# dbifier (WIP)
+<img src="https://user-images.githubusercontent.com/6492229/81743193-96de0680-94a1-11ea-98ca-3e1cd2d67571.png" width="400"  />
+
+## database modeling with a strong opinion
 
 Aims to create an online tool to which is really easy to use to model your database. Not at all finished.
+See short video demo here: https://twitter.com/RichardLindhout/status/1260307743652675585
+
+## Note
+
+This program is not usable yet, you're welcome to contribute if you like!
 
 ## Roadmap
 
@@ -10,7 +17,11 @@ Aims to create an online tool to which is really easy to use to model your datab
 - [x] Export to MySQL or PostgreSQL
 - [ ] Import from MySQL or PostgreSQL
 - [ ] Better approach for saving data locally
-- [ ] Support for syncing with cloud
+- [ ] Support for syncing with cloud (premium?)
+
+## Why
+
+Because current solution require too much knowledge or clicking, are too advanced for most use-cases and cost too much \$\$.
 
 ## Techniques
 
