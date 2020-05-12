@@ -1,6 +1,6 @@
 # dbifier - database modeling with a strong opinion (work in progress)
 Aims to create an online tool to which is really easy to use to model your database. Not at all finished.
-
+See short video demo here: https://twitter.com/RichardLindhout/status/1260307743652675585
 
 ## Roadmap
 - [x] Very rough proof of concept
