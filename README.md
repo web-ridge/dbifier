@@ -1,4 +1,4 @@
-# dbifier (WIP)
+# dbifier - database modeling with a strong opinion (work in progress)
 Aims to create an online tool to which is really easy to use to model your database. Not at all finished.
 
 
