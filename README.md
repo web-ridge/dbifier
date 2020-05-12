@@ -8,7 +8,8 @@ Aims to create an online tool to which is really easy to use to model your datab
 - [ ] Create basic relations
 - [ ] Export to MySQL or PostgreSQL
 - [ ] Import from MySQL or PostgreSQL
-
+- [ ] Better approach for saving data locally
+- [ ] Support for syncing with cloud
 
 ## Techniques
 https://github.com/holistics/dbml   
