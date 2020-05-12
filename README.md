@@ -1,4 +1,4 @@
-![Logo dbifier](https://user-images.githubusercontent.com/6492229/81743193-96de0680-94a1-11ea-98ca-3e1cd2d67571.png | width=300 "Logo dbifier")
+![Logo dbifier](https://user-images.githubusercontent.com/6492229/81743193-96de0680-94a1-11ea-98ca-3e1cd2d67571.png | width=300)
 
 
 # dbifier - database modeling with a strong opinion (work in progress)
