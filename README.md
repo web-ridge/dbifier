@@ -1,9 +1,8 @@
 
 
 <img src="https://user-images.githubusercontent.com/6492229/81743193-96de0680-94a1-11ea-98ca-3e1cd2d67571.png" width="400"  /> 
+
 ### database modeling with a strong opinion (work in progress)
-
-
 
 Aims to create an online tool to which is really easy to use to model your database. Not at all finished.
 See short video demo here: https://twitter.com/RichardLindhout/status/1260307743652675585
