@@ -3,10 +3,10 @@
 ## database modeling with a strong opinion
 
 Aims to create an online tool to which is really easy to use to model your database. Not at all finished.
-See short video demo's here: 
+See short video demo's here:
 
-12 May: basic export to MySQL / PostgreSQL https://twitter.com/RichardLindhout/status/1260321745283710980
-12 May: basic proof of concept: https://twitter.com/RichardLindhout/status/1260307743652675585
+- 12 May: basic export to MySQL / PostgreSQL https://twitter.com/RichardLindhout/status/1260321745283710980
+- 12 May: basic proof of concept: https://twitter.com/RichardLindhout/status/1260307743652675585
 
 ## Note
 
