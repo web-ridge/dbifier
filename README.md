@@ -3,6 +3,7 @@ Aims to create an online tool to which is really easy to use to model your datab
 
 
 ## Roadmap
+- [x] Very rough proof of concept
 - [ ] Create basic models
 - [ ] Create basic relations
 - [ ] Export to MySQL or PostgreSQL
@@ -11,4 +12,3 @@ Aims to create an online tool to which is really easy to use to model your datab
 
 ## Techniques
 https://github.com/holistics/dbml   
-https://github.com/projectstorm/react-diagrams
