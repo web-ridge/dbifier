@@ -12,6 +12,8 @@ import {
 import AppLogoIcon from './AppLogoIcon'
 import { TableType } from './types'
 import DatabaseTables from './DatabaseTables'
+import DatabaseImport from './DatabaseImport'
+import DatabaseExport from './DatabaseExport'
 
 const useTablesState = createPersistedState('tables')
 
@@ -56,6 +58,7 @@ const useStyles = makeStyles((theme: Theme) =>
       textTransform: 'none',
       paddingLeft: 20,
       paddingRight: 20,
+      marginLeft: 12,
     },
   })
 )
@@ -109,6 +112,8 @@ export default function App() {
           >
             Add table
           </Button>
+          <DatabaseExport tables={tables} />
+          <DatabaseImport tables={tables} />
         </Toolbar>
       </AppBar>
 
