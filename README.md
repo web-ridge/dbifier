@@ -11,5 +11,8 @@ See short video demo here: https://twitter.com/RichardLindhout/status/1260307743
 - [ ] Better approach for saving data locally
 - [ ] Support for syncing with cloud (premium?)
 
+## Why
+Because current solution require too much knowledge or clicking, are too advanced for most use-cases and cost too much $$.
+
 ## Techniques
 https://github.com/holistics/dbml   
