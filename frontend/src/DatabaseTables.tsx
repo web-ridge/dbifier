@@ -1,14 +1,19 @@
 import * as React from 'react'
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core'
-import { TableType } from './types'
+import { TableType, TableRelationType } from './types'
 import DatabaseTable from './DatabaseTable'
+import PF from 'pathfinding'
+//@ts-ignore
+import { PathLine } from 'react-svg-pathline'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
   })
 )
+
+export const precision = 25 // 50 px
 
 export default function DatabaseTables({
   tables,
@@ -22,6 +27,57 @@ export default function DatabaseTables({
   // eslint-disable-next-line
   const classes = useStyles()
 
+  // TODO: let user create relations
+  const relations = React.useMemo<TableRelationType[]>(() => {
+    if (tables.length >= 2) {
+      return [
+        { from: tables[0], to: tables[1], relationshipType: 'one-to-one' },
+      ]
+    }
+    return []
+  }, [tables])
+
+  // We divide our screen in blocks of 50px
+  const getPathBetweenTwoTables = React.useCallback(
+    (from, to) => {
+      var w = window.innerWidth
+      var h = window.innerHeight
+
+      // divide in blocks of precision
+      var width = Math.ceil(w / precision)
+      var height = Math.ceil(h / precision)
+
+      const grid = new PF.Grid(width, height)
+
+      // let block all other tables from and two
+      tables
+        .filter((table) => table !== from && table !== to)
+        .forEach(({ x, y }) => {
+          const gridX = Math.ceil(x / precision)
+          const gridY = Math.ceil(y / precision)
+          grid.setWalkableAt(gridX, gridY, false)
+        })
+
+      const finder = new PF.BestFirstFinder({
+        //@ts-ignore
+        allowDiagonal: false,
+        heuristic: function (dx, dy) {
+          return Math.min(dx, dy)
+        },
+      })
+
+      const path = finder.findPath(
+        Math.ceil(from.x / precision),
+        Math.ceil(from.y / precision),
+        Math.ceil(to.x / precision),
+        Math.ceil(to.y / precision),
+        grid
+      )
+      return path
+    },
+    [tables]
+  )
+  console.log({ tables, relations })
   return (
     <>
       {tables.map((table, tableIndex) => (
@@ -33,6 +89,35 @@ export default function DatabaseTables({
           onRemove={onRemove}
         />
       ))}
+      <svg
+        style={{
+          pointerEvents: 'none',
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          right: 0,
+          width: '100%',
+          height: '100%',
+        }}
+      >
+        {relations.map((relation, relationIndex: number) => {
+          const path = getPathBetweenTwoTables(relation.from, relation.to)
+          console.log({ path })
+          return (
+            <PathLine
+              points={path.map((coordinates: number[]) => ({
+                x: coordinates[0] * precision,
+                y: coordinates[1] * precision,
+              }))}
+              stroke="black"
+              strokeWidth="3"
+              fill="none"
+              r={10}
+            />
+          )
+        })}
+      </svg>
     </>
   )
 }

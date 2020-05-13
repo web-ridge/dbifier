@@ -13,3 +13,11 @@ export interface ColumnType {
   name: string
   dataType: string
 }
+
+export type RelationshipType = 'one-to-one'
+
+export interface TableRelationType {
+  from: TableType
+  to: TableType
+  relationshipType: RelationshipType
+}

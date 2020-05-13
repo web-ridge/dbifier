@@ -7,15 +7,13 @@
     "@material-ui/core": "^4.9.14",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.14",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "classnames": "^2.2.6",
+    "pathfinding": "^0.4.18",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-draggable": "^4.3.1",
     "react-scripts": "3.4.1",
-    "typescript": "^3.8.3",
+    "react-svg-pathline": "^0.5.0",
     "use-persisted-state": "^0.3.0"
   },
   "scripts": {
@@ -42,9 +40,12 @@
   "devDependencies": {
     "@types/classnames": "^2.2.10",
     "@types/jest": "^25.2.1",
+    "@types/lodash": "^4.14.150",
     "@types/node": "^13.13.5",
+    "@types/pathfinding": "^0.0.4",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@types/use-persisted-state": "^0.3.0"
+    "@types/use-persisted-state": "^0.3.0",
+    "typescript": "^3.9.2"
   }
 }

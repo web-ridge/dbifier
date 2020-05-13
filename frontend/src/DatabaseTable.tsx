@@ -5,11 +5,12 @@ import classNames from 'classnames'
 import {
   IconButton,
   makeStyles,
-  InputBase,
   createStyles,
   Theme,
+  Typography,
+  TextField,
 } from '@material-ui/core'
-import { DeleteOutline } from '@material-ui/icons'
+import { DeleteOutline, Edit } from '@material-ui/icons'
 import { TableType, ColumnType } from './types'
 import DatabaseTableColumns from './DatabaseTableColumns'
 
@@ -19,25 +20,29 @@ const useStyles = makeStyles((theme: Theme) =>
       position: 'absolute',
       left: 0,
       top: 0,
-      border: '2px solid rgb(64,67,209)',
+
       borderRadius: 10,
-      background: 'rgba(255,255,255,0.9)',
-      boxShadow: 'rgb(0, 0, 255, 0.2) 0px 5px 10px 0px',
+      background: '#fff',
+      boxShadow: 'rgb(0, 0, 0, 0.2) 0px 5px 10px 0px',
+      zIndex: 10,
     },
     tableTitle: {
-      background: 'rgb(64,67,209)',
-      color: '#fff',
+      background: '#38DF84',
 
-      fontWeight: 'bold',
+      borderRadius: 10,
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+
       display: 'flex',
       alignItems: 'center',
       flexDirection: 'row',
       padding: 10,
       cursor: 'pointer',
     },
-    titleInput: {
-      color: '#fff',
-      fontWeight: 'bold',
+    titleLabel: { fontWeight: 700 },
+    titleInput: {},
+    iconButton: {
+      opacity: 0.8,
     },
   })
 )
@@ -54,9 +59,8 @@ function DatabaseTable({
   onRemove: (tableIndex: number) => any
 }) {
   const classes = useStyles()
-  const [dragEnabled, setDragEnabled] = React.useState<boolean>(true)
-  const onBlurTitle = () => setDragEnabled(true)
-  const onFocusTitle = () => setDragEnabled(false)
+  const [isTyping, setIsTyping] = React.useState<boolean>(false)
+  const onBlurTitle = () => setIsTyping(false)
 
   const onChangeColumns = React.useCallback(
     (newColumns: ColumnType[]) => {
@@ -75,28 +79,43 @@ function DatabaseTable({
       onStop={(_: any, data: DraggableData) => {
         onChange(tableIndex, { ...table, x: data.x, y: data.y })
       }}
-      disabled={!dragEnabled}
+      disabled={isTyping}
     >
-      <div className={classes.table} style={{ width: table.width }}>
+      <div
+        id={`table-${tableIndex}`}
+        className={classes.table}
+        style={{ width: table.width }}
+      >
         <div className={classNames('handle', classes.tableTitle)}>
-          <InputBase
-            type={'text'}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-              const title = event.currentTarget.value
-              onChange(tableIndex, { ...table, title })
-            }}
-            defaultValue={table.title}
-            className={classes.titleInput}
-            placeholder="Untitled"
-            onBlur={onBlurTitle}
-            onFocus={onFocusTitle}
-          />
+          {isTyping ? (
+            <TextField
+              type={'text'}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                const title = event.currentTarget.value
+                onChange(tableIndex, { ...table, title })
+              }}
+              defaultValue={table.title}
+              className={classes.titleInput}
+              placeholder="Untitled"
+              onBlur={onBlurTitle}
+            />
+          ) : (
+            <Typography className={classes.titleLabel}>
+              {table.title || 'Untitled'}
+              <IconButton
+                onClick={() => setIsTyping(true)}
+                className={classes.iconButton}
+              >
+                <Edit fontSize={'small'} />
+              </IconButton>
+            </Typography>
+          )}
           <div style={{ flex: 1 }}></div>
           <IconButton
             onClick={() => onRemove(tableIndex)}
-            style={{ color: '#fff', opacity: 0.9 }}
+            className={classes.iconButton}
           >
-            <DeleteOutline />
+            <DeleteOutline fontSize={'small'} />
           </IconButton>
         </div>
 
