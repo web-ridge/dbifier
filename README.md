@@ -25,7 +25,7 @@ This program is not usable yet, you're welcome to contribute if you like!
 
 ## Why
 
-Because current solution require too much knowledge or clicking, are too advanced for most use-cases and cost too much \$\$.
+Because current solutions require too much knowledge or clicking, are too advanced for most use-cases and cost too much \$\$.
 
 ## Techniques
 
