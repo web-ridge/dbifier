@@ -40,22 +40,41 @@ export default function DatabaseTables({
   // We divide our screen in blocks of 50px
   const getPathBetweenTwoTables = React.useCallback(
     (from, to) => {
-      var w = window.innerWidth
-      var h = window.innerHeight
+      let w = window.innerWidth
+      let h = window.innerHeight
 
       // divide in blocks of precision
-      var width = Math.ceil(w / precision)
-      var height = Math.ceil(h / precision)
+      let width = Math.ceil(w / precision)
+      let height = Math.ceil(h / precision)
 
       const grid = new PF.Grid(width, height)
 
-      // let block all other tables from and two
+      // let set all other tables as obstacles
       tables
         .filter((table) => table !== from && table !== to)
-        .forEach(({ x, y }) => {
-          const gridX = Math.ceil(x / precision)
-          const gridY = Math.ceil(y / precision)
-          grid.setWalkableAt(gridX, gridY, false)
+        .forEach((table) => {
+          // TODO: how much of the table
+          let gridHeight = Math.ceil(table.height / precision)
+          let gridWidth = Math.ceil(table.width / precision)
+
+          console.log({ gridWidth, gridHeight })
+
+          const gridX = Math.ceil(table.x / precision)
+          const gridY = Math.ceil(table.y / precision)
+
+          // e.g. height is 5
+          // gridY is 2
+          // we need to block 5,6 of y
+          //
+          // width is 4
+          // gridX is 5
+          // we need to block 5, 6, 7, 8
+
+          for (let x = gridX; x <= gridX + gridWidth; x++) {
+            for (let y = gridY; y <= gridY + gridHeight; y++) {
+              grid.setWalkableAt(x, y, false)
+            }
+          }
         })
 
       const finder = new PF.BestFirstFinder({

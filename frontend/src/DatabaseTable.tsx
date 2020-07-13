@@ -79,6 +79,10 @@ function DatabaseTable({
       onStop={(_: any, data: DraggableData) => {
         onChange(tableIndex, { ...table, x: data.x, y: data.y })
       }}
+      // onDrag={(e, data) => {
+      //   // TODO: throttle / debounce
+      //   onChange(tableIndex, { ...table, x: data.x, y: data.y })
+      // }}
       disabled={isTyping}
     >
       <div
