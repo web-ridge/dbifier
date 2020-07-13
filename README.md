@@ -20,11 +20,11 @@ This program is not usable yet, you're welcome to contribute if you like!
 - [x] Export to MySQL or PostgreSQL
 - [ ] Import from MySQL or PostgreSQL
 - [ ] Better approach for saving data locally
-- [ ] Support for syncing with cloud (premium?)
+- [ ] Make this an Electron app and automatically save migrations (Golang migrate / Laravel migrations)
 
 ## Why
 
-Because current solution require too much knowledge or clicking, are too advanced for most use-cases and cost too much \$\$.
+Because current solutions require too much knowledge or clicking, are too advanced for most use-cases and cost too much \$\$.
 
 ## Techniques
 
