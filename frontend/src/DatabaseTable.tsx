@@ -13,6 +13,7 @@ import {
 import { DeleteOutline, Edit } from '@material-ui/icons'
 import { TableType, ColumnType } from './types'
 import DatabaseTableColumns from './DatabaseTableColumns'
+import DatabaseTableRelationCreate from './DatabaseTableRelationCreate'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -127,6 +128,8 @@ function DatabaseTable({
           columns={table.columns}
           onChange={onChangeColumns}
         />
+
+        <DatabaseTableRelationCreate />
       </div>
     </Draggable>
   )
